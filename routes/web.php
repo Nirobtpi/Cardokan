@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Car\BrandController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -29,10 +30,16 @@ Route::middleware('auth:admin')->group(function () {
         // email configration 
         Route::get('/email/config', [EmailConfigrationController::class,'index'])->name('admin.email.config');
         Route::put('/email/config/{id}', [EmailConfigrationController::class,'update'])->name('admin.email.update');
+
+        //car route list
+        Route::resource('/brand', BrandController::class);
+        Route::get('/brand/status/{id}', [BrandController::class, 'status'])->name('brand.status');
+        
     });
 });
-Route::get('/test', function () {
-    
-    Mail::to('wavaje4982@fuasha.com')->send(new TestMail("This is a test email from CarDokan!"));
-    return "Mail sent!";
-});
+
+// Route::get('/test', function () {
+   
+//     Mail::to('wavaje4982@fuasha.com')->send(new TestMail("This is a test email from CarDokan!"));
+//     return "Mail sent!";
+// });

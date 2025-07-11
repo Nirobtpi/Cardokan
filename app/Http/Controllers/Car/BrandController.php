@@ -1,0 +1,120 @@
+<?php
+
+namespace App\Http\Controllers\Car;
+
+use App\Http\Controllers\Controller;
+use App\Models\Car\CarBrand;
+use Illuminate\Http\Request;
+
+class BrandController extends Controller
+{
+    public function __construct(){
+        $this->middleware("auth:admin");
+    }
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $brands = CarBrand::paginate(5);
+
+        return view('admin.car.brand.index', compact('brands'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('admin.car.brand.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // return $request->all();
+       $request->validate([
+            'brand_name'=>['required','unique:car_brands,brand_name'],
+            'slug'=>['required','unique:car_brands,brand_slug'],
+            'photo'=>['required','image','mimes:jpeg,png,jpg,gif,svg,webp','max:2048'],
+            'status'=>['nullable'],
+        ],[
+            'brand_name'=>'The brand name is required.',
+            'brand_name.unique'=>'The brand name must be unique.',
+            'slug.required'=>'The slug is required.',
+            'slug.unique'=>'The slug must be unique.',
+            'photo.required'=>'The photo is required.',
+            'photo.image'=>'The photo must be an image.',
+            'photo.mimes'=>'The photo must be a file of type: jpeg, png, jpg, gif, svg,webp.',
+            'photo.max'=>'The photo may not be greater than 2048 kilobytes.',
+        ]);
+
+        $brand=[
+            'brand_name'=>$request->brand_name,
+            'brand_slug'=>$request->slug,
+            'status'=>$request->visibility ?? 0, // Default to 0 if not provided
+        ];
+
+        if($request->hasFile('photo')){
+           $photo = $request->file('photo');
+           $photoName = time().'.'.$photo->getClientOriginalExtension();
+           $photo->move(public_path('uploads/brand'), $photoName);
+
+           $brand['brand_logo']='uploads/brand/'.$photoName;
+        }
+        CarBrand::create($brand);
+
+        $message='Brand created successfully.';
+        return redirect()->route('brand.index')->with(['message'=>$message,'alert-type'=>'success']);
+        
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        
+    }
+    public function status(string $id)
+    {
+        $brand=CarBrand::findOrFail($id);
+         
+        if($brand->status == 1){
+            $brand->status = 0;
+        }else{
+            $brand->status = 1;
+        }
+        $brand->update();
+
+        return redirect()->route('brand.index')->with(['message'=>'Brand status updated successfully.','alert-type'=>'success']);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $brand=CarBrand::findOrFail($id);
+        return view('admin.car.brand.edit',compact('brand'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        CarBrand::destroy($id);
+        return redirect()->route('brand.index')->with(['message'=>'Brand deleted successfully.','alert-type'=>'success']);
+    }
+}
