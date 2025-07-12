@@ -4,3 +4,11 @@
 a {
 	text-decoration: none !important;
 }
+div.dt-container div.dt-paging ul.pagination {
+
+	display: flex !important;
+	gap: 10px !important;
+}
+.card {
+	padding: 0 !important;
+}

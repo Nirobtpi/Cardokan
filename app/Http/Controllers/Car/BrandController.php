@@ -159,7 +159,11 @@ class BrandController extends Controller
     */
     public function destroy(string $id)
     {
-        CarBrand::destroy($id);
+        $carbrand_image=CarBrand::findOrFail($id);
+         if(!empty($carbrand_image->brand_logo) && file_exists(public_path($carbrand_image->brand_logo))){
+                unlink(public_path($carbrand_image->brand_logo));
+            }
+        $carbrand_image->destroy($id);
         return redirect()->route('brand.index')->with(['message'=>'Brand deleted successfully.','alert-type'=>'success']);
     }
 }

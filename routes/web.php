@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Car\BrandController;
+use App\Http\Controllers\Car\FeatureController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -35,6 +36,9 @@ Route::middleware('auth:admin')->group(function () {
         Route::resource('/brand', BrandController::class);
         Route::get('/brand/status/{id}', [BrandController::class, 'status'])->name('brand.status');
         Route::get('/brands/search', [BrandController::class, 'search'])->name('brand.search');
+
+        // feature  route 
+        Route::resource('/feature',FeatureController::class);
 
     });
 });
