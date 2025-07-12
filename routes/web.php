@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Car\BrandController;
 use App\Http\Controllers\Car\FeatureController;
+use App\Http\Controllers\Country\CityController;
+use App\Http\Controllers\Country\CountryController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -39,6 +41,10 @@ Route::middleware('auth:admin')->group(function () {
 
         // feature  route 
         Route::resource('/feature',FeatureController::class);
+
+        // country route 
+        Route::resource('country', CountryController::class);
+        Route::resource('city', CityController::class);
 
     });
 });

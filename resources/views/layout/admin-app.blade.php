@@ -244,6 +244,26 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-clipboard-fill"></i>
                                 <p>
+                                    Manage Location <i class="nav-arrow bi bi-chevron-right"></i> </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('country.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Country List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('city.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>City List</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-clipboard-fill"></i>
+                                <p>
                                     Subscription Plan <i class="nav-arrow bi bi-chevron-right"></i> </p>
                             </a>
                             <ul class="nav nav-treeview">
