@@ -34,7 +34,8 @@ Route::middleware('auth:admin')->group(function () {
         //car route list
         Route::resource('/brand', BrandController::class);
         Route::get('/brand/status/{id}', [BrandController::class, 'status'])->name('brand.status');
-        
+        Route::get('/brands/search', [BrandController::class, 'search'])->name('brand.search');
+
     });
 });
 

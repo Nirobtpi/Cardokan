@@ -9,7 +9,9 @@
         <div class="card mb-4">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="card-title">Bordered Table</h3>
+                    <div class="search">
+                        <input type="text" name="search" id="searchInput" placeholder="Search..." class="form-control">
+                    </div>
                     <a href="{{ route('brand.create') }}" class="btn btn-primary">+ Create New</a>
                 </div>
 
@@ -25,7 +27,7 @@
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="tbody">
                         @foreach ($brands as $key=>$brand)
                         <tr class="align-middle">
                             <td>{{ $brands->firstItem() + $key }}</td>
@@ -48,9 +50,11 @@
                     </tbody>
                 </table>
             </div> <!-- /.card-body -->
+            @if( $brands->total()>5)
             <div class="card-footer clearfix">
                 {{ $brands->links('vendor.pagination.custom') }}
             </div>
+            @endif
         </div>
     </div>
 
@@ -64,6 +68,53 @@
     </script>
     <script>
         $(document).ready(function() {
+            // search ajax 
+            $('#searchInput').on('keyup',function(){
+                let val=$(this).val();
+               $.ajax({
+                url:`{{ route('brand.search') }}`,
+                type:"GET",
+                data: { search: val },
+                success:function(data){
+                    console.log(data)
+                    let html='';
+                    const editurl = "{{ route('brand.edit', ':id') }}";
+                    const deleteurl = "{{ route('brand.destroy', ':id') }}";
+                    let csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    if(data.length >0){
+                        data.forEach(function(brand,index){
+                            let editUrl = editurl.replace(':id', brand.id);
+                            let deleteUrl = deleteurl.replace(':id', brand.id);
+                           html+="<tr>"
+                            html+="<td>"+(index+1)+"</td>"
+                           html += "<td>" + brand.brand_name + "</td>";
+                            html+=`<td>${brand.brand_name}</td>`
+                            html+=`
+                                <td>
+                                    <a href='/admin/brand/status/${brand.id}' class='${brand.status ==1 ? 'badge text-bg-dark text-light' : 'badge text-bg-danger' }''>${brand.status==1 ? 'Active':'Inactive'}</a>
+                                    </td>
+                            `
+                            html+=`<td>
+                                    <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
+                                    <form id="brand-delete-2" action="${deleteUrl}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit"  class="btn btn-sm btn-danger delete-btn-two">Delete</button>
+                                    </form>
+                                </td>`
+                           
+                        })
+                    }else{
+                        html+=`
+                            <td colspan='5' class='text-center'>No Data Found</td>
+                        `
+                    }
+                    $('.tbody').html(html);
+                },
+               })
+            });
+            // delete alert 
             $('.delete-btn').on('click',function(event){
                 event.preventDefault();
                 Swal.fire({
@@ -76,12 +127,26 @@
                     confirmButtonText: "Yes, delete it!"
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            $('#brand-delete').submit();
+                            $(this).closest('form').submit()
                     }
                 });
             })
-
-        }); 
+            $(document).on('click','.delete-btn-two',function(event){
+                event.preventDefault();
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $(this).closest('form').submit()
+                    }
+                });
+            })}); 
 
     </script>
     @endpush

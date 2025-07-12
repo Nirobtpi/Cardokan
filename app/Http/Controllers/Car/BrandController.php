@@ -91,6 +91,20 @@ class BrandController extends Controller
 
         return redirect()->route('brand.index')->with(['message'=>'Brand status updated successfully.','alert-type'=>'success']);
     }
+        /**
+     * live search without page load.
+    */
+    public function search(Request $request){
+        // return 'ok';
+         $query = $request->get('search');
+        
+       $brands = CarBrand::where(function($q) use ($query) {
+        $q->where('brand_name', 'like', '%' . $query . '%')
+          ->orWhere('brand_slug', 'like', '%' . $query . '%');
+        })->get();
+
+        return response()->json($brands);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -106,12 +120,43 @@ class BrandController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+         $request->validate([
+            'brand_name'=>['required','unique:car_brands,brand_name,'.$id],
+            'slug'=>['required','unique:car_brands,brand_slug,'.$id],
+            'photo'=>['image','mimes:jpeg,png,jpg,gif,svg,webp','max:2048'],
+            'status'=>['nullable'],
+        ],[
+            'brand_name'=>'The brand name is required.',
+            'brand_name.unique'=>'The brand name must be unique.',
+            'slug.required'=>'The slug is required.',
+            'slug.unique'=>'The slug must be unique.',
+            'photo.image'=>'The photo must be an image.',
+            'photo.mimes'=>'The photo must be a file of type: jpeg, png, jpg, gif, svg,webp.',
+            'photo.max'=>'The photo may not be greater than 2048 kilobytes.',
+        ]);
+        $brand_update=CarBrand::findOrFail($id);
+        $brand=[
+            'brand_name'=>$request->brand_name,
+            'brand_slug'=>$request->slug,
+            'status'=>$request->visibility ?? 0, // Default to 0 if not provided
+        ];
+        if($request->hasFile('photo')){
+            $file=$request->file('photo');
+            $fileName=time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('uploads/brand'), $fileName);
+            $brand['brand_logo']='uploads/brand/'.$fileName;
+            
+            if(!empty($brand_update->brand_logo) && file_exists(public_path($brand_update->brand_logo))){
+                unlink(public_path($brand_update->brand_logo));
+            }
+        }
+        $brand_update->update($brand);
 
+        return redirect()->route('brand.index')->with(['message'=>'Brand updated successfully.','alert-type'=>'success']);
+    }
     /**
      * Remove the specified resource from storage.
-     */
+    */
     public function destroy(string $id)
     {
         CarBrand::destroy($id);
