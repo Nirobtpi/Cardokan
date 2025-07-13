@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/adminlte.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
     <link rel="stylesheet" href="{{ asset('assets/css/my.css') }}">
     @stack('css')
@@ -237,6 +239,12 @@
                                     <a href="{{ route('feature.index') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
                                         <p>Feature List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('car.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Car List</p>
                                     </a>
                                 </li>
                             </ul>
@@ -461,6 +469,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
     
     <script src="{{ asset('assets/js/adminlte.js') }}"></script>

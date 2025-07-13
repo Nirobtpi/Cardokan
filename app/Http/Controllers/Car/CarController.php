@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Car;
 
-use App\Http\Controllers\Controller;
+use App\Models\Car\CarBrand;
+use App\Models\Country\City;
+use App\Models\User;
+use App\Models\Car\Car;
+use App\Models\Car\Feature;
 use Illuminate\Http\Request;
+use App\Models\Country\Country;
+use App\Http\Controllers\Controller;
 
 class CarController extends Controller
 {
@@ -12,7 +18,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        $cars = Car::all();
+        return view("admin.car.car.index", compact("cars"));
     }
 
     /**
@@ -20,7 +27,11 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        $counties=Country::all();
+        $features=Feature::all();
+        $brands=CarBrand::all();
+        $users=User::all();
+        return view("admin.car.car.create", compact("counties","features","users",'brands'));
     }
 
     /**
@@ -28,7 +39,7 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       return $request->feature;
     }
 
     /**
@@ -37,6 +48,12 @@ class CarController extends Controller
     public function show(string $id)
     {
         //
+    }
+
+    public function cities($id){
+        $city=City::where('country_id',$id)->get();
+
+        return response()->json($city);
     }
 
     /**

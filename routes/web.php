@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Car\BrandController;
+use App\Http\Controllers\Car\CarController;
 use App\Http\Controllers\Car\FeatureController;
 use App\Http\Controllers\Country\CityController;
 use App\Http\Controllers\Country\CountryController;
@@ -45,6 +46,9 @@ Route::middleware('auth:admin')->group(function () {
         // country route 
         Route::resource('country', CountryController::class);
         Route::resource('city', CityController::class);
+        Route::resource('car', CarController::class);
+        // city ajax route 
+        Route::get('/ajax/city/{id}',[CarController::class,'cities'])->name('ajax.city');
 
     });
 });

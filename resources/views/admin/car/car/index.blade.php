@@ -1,6 +1,6 @@
 @extends('layout.admin-app')
-@section('title_text', 'Feature List')
-@section('page_title', 'Feature List')
+@section('title_text', 'Car List')
+@section('page_title', 'Car List')
 @section('content')
 
 <div class="container">
@@ -9,10 +9,10 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <h2 class="card-title">Feature List</h2>
+                        <h2 class="card-title">Car List</h2>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('feature.create') }}" class="btn btn-primary">+ Feature Create</a>
+                        <a href="{{ route('car.create') }}" class="btn btn-primary">+ Car Create</a>
                     </div>
                 </div>
             </div>
@@ -26,13 +26,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($features as $feature)
+                        @foreach ($cars as $car)
                             <tr>
                                 <td>{{ $loop->index +1 }}</td>
-                                <td>{{ $feature->name }}</td>
+                                <td>{{ $car->name }}</td>
                                 <td>
-                                    <a href="{{ route('feature.edit',$feature->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form id="brand-delete" action="{{ route('feature.destroy',$feature->id) }}" method="POST"
+                                    <a href="{{ route('car.edit',$car->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <form id="brand-delete" action="{{ route('car.destroy',$car->id) }}" method="POST"
                                     style="display:inline;">
                                     @csrf
                                     @method('DELETE')
