@@ -21,7 +21,10 @@
                     <thead>
                         <tr>
                             <th scope="col">Serial</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Dealer</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -30,6 +33,10 @@
                             <tr>
                                 <td>{{ $loop->index +1 }}</td>
                                 <td>{{ $car->name }}</td>
+                                <td>{{ $car->brand->brand_name }}</td>
+                                <td>{{ $car->price }}</td>
+                                <td>{{ $car->user->name }}</td>
+                                
                                 <td>
                                     <a href="{{ route('car.edit',$car->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                     <form id="brand-delete" action="{{ route('car.destroy',$car->id) }}" method="POST"

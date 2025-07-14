@@ -32,7 +32,7 @@
                         <tr class="align-middle">
                             <td>{{ $brands->firstItem() + $key }}</td>
                             <td>{{ $brand->brand_name }}</td>
-                            <td>{{ $brand->status }}</td>
+                            <td>{{ $brand->cars->count() }}</td>
                             <td><a href="{{ route('brand.status', $brand->id) }}"
                                     class="{{ $brand->status == 1 ? 'badge text-bg-dark text-light' : 'badge text-bg-danger' }}">{{ $brand->status ==1 ? 'Active' : 'Inactive' }}</a>
                             </td>

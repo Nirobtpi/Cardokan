@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Car;
 
+use App\Http\Requests\CarRequest;
 use App\Models\Car\CarBrand;
 use App\Models\Country\City;
 use App\Models\User;
@@ -18,7 +19,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::all();
+        $cars = Car::with('user','brand','features')->get();
         return view("admin.car.car.index", compact("cars"));
     }
 
@@ -29,7 +30,7 @@ class CarController extends Controller
     {
         $counties=Country::all();
         $features=Feature::all();
-        $brands=CarBrand::all();
+        $brands=CarBrand::where('status','=','1')->get();
         $users=User::all();
         return view("admin.car.car.create", compact("counties","features","users",'brands'));
     }
@@ -37,9 +38,53 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarRequest $request)
     {
-       return $request->feature;
+       $request->validated();
+       $car = [
+        'purpose'=> $request->purpose,
+        'user_id'=> $request->dealer,
+        'name'=> $request->title,
+        'slug'=>$request->slug,
+        'brand_id'=>$request->brand,
+        'country_id'=>$request->country,
+        'city_id'=>$request->city,
+        'rent_period'=>$request->rent_period,
+        'price'=>$request->regular_price,
+        'offer_price'=>$request->offer_price,
+        'description'=>$request->description,
+        'seller_type'=>$request->seller_type,
+        'body_type'=>$request->body_type,
+        'engine_size'=>$request->engine_size,
+        'drive'=>$request->drive,
+        'interior_color'=>$request->interior_color,
+        'exterior_color'=>$request->exterior_color,
+        'year'=>$request->year,
+        'mileage'=>$request->mileage,
+        'total_owner'=>$request->total_owner,
+        'fuel_type'=>$request->fuel_type,
+        'transmission'=>$request->transmission,
+        'car_model'=>$request->car_model,
+        'is_approve'=>0,
+        'image'=>$request->car_image,
+       ];
+
+       if($request->hasFile('car_image')){
+            $file=$request->file('car_image');
+
+            $filename= time().'.'.$file->getClientOriginalExtension();
+            // return $filename;
+
+            $file->move(public_path('uploads/cars'), $filename);
+
+            $car['image']='uploads/cars/'.$filename;
+       }
+
+      $cars= Car::create($car);
+      
+       $cars->features()->sync($request->feature);
+           
+       return redirect()->route('car.create')->with(['message'=>'Car Create Successfully','alert-type'=>'success']);
     }
 
     /**
@@ -52,7 +97,7 @@ class CarController extends Controller
 
     public function cities($id){
         $city=City::where('country_id',$id)->get();
-
+        // return $city;
         return response()->json($city);
     }
 

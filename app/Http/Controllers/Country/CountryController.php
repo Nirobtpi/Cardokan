@@ -13,7 +13,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = Country::all();
+        $countries = Country::withCount('cars')->get();
         return view("admin.country.index", compact("countries"));
     }
 

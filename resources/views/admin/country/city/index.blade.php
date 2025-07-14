@@ -23,26 +23,30 @@
                             <th scope="col">Serial</th>
                             <th scope="col">City Name</th>
                             <th scope="col">Country Name</th>
+                            <th scope="col">Total Car</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($cities as $city)
-                            <tr>
-                                <td>{{ $loop->index +1 }}</td>
-                                <td>{{ $city->name }}</td>
-                                <td>{{ $city->country->name }}</td>
-                                <td>
-                                    <a href="{{ route('city.edit',$city->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form id="brand-delete" action="{{ route('city.destroy',$city->id) }}" method="POST"
-                                    style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"  class="btn btn-sm btn-danger delete-btn">Delete</button>
-                                </form>
-                                </td>
-                            </tr>
-                        @endforeach
+                        @if($cities->count() >0)
+                            @foreach ($cities as $city)
+                                <tr>
+                                    <td>{{ $loop->index +1 }}</td>
+                                    <td>{{ $city->name }}</td>
+                                    <td>{{ $city->country->name }}</td>
+                                    <td>{{ $city->cars->count() }}</td>
+                                    <td>
+                                        <a href="{{ route('city.edit',$city->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <form id="brand-delete" action="{{ route('city.destroy',$city->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"  class="btn btn-sm btn-danger delete-btn">Delete</button>
+                                    </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div> <!-- /.card-body -->

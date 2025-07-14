@@ -9,6 +9,6 @@ class Feature extends Model
     protected $guarded=[];
 
     public function cars(){
-        return $this->belongsToMany(Car::class);
+        return $this->belongsToMany(Car::class,'car_feature');
     }
 }

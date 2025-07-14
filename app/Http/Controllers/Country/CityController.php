@@ -15,7 +15,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::with('country')->get();
+        $cities = City::with('country','cars')->get();
         // $countries = Country::all();
         return view("admin.country.city.index", compact("cities"));
     }

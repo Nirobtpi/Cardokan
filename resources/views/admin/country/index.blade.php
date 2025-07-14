@@ -22,6 +22,7 @@
                         <tr>
                             <th scope="col">Serial</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Total Car</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -30,6 +31,7 @@
                             <tr>
                                 <td>{{ $loop->index +1 }}</td>
                                 <td>{{ $country->name }}</td>
+                                <td>{{ $country->cars->count() }}</td>
                                 <td>
                                     <a href="{{ route('country.edit',$country->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                     <form id="brand-delete" action="{{ route('country.destroy',$country->id) }}" method="POST"
