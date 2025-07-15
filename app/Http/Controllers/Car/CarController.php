@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Car;
 
-use App\Http\Requests\CarRequest;
-use App\Models\Car\CarBrand;
-use App\Models\Country\City;
 use App\Models\User;
 use App\Models\Car\Car;
 use App\Models\Car\Feature;
+use App\Models\Car\CarBrand;
+use App\Models\Country\City;
 use Illuminate\Http\Request;
 use App\Models\Country\Country;
+use App\Http\Requests\CarRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+
 
 class CarController extends Controller
 {
@@ -66,7 +68,6 @@ class CarController extends Controller
         'transmission'=>$request->transmission,
         'car_model'=>$request->car_model,
         'is_approve'=>0,
-        'image'=>$request->car_image,
        ];
 
        if($request->hasFile('car_image')){
@@ -106,15 +107,70 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $car=Car::with('features')->findOrFail($id);
+        $countries=Country::all();
+        $city=City::where('id','=',$car->city_id)->first();
+        $features=Feature::all();
+        $brands=CarBrand::where('status','=','1')->get();
+        $users=User::all();
+        // Session::put('name','Nirob'); 
+        return view('admin.car.car.edit',compact('car','features','countries','brands','users','city'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CarRequest $request, string $id)
     {
-        //
+        $car=Car::findOrFail($id);
+        
+        $request->validated();
+       
+        $carUpdate = [
+        'purpose'=> $request->purpose,
+        'user_id'=> $request->dealer,
+        'name'=> $request->title,
+        'slug'=>$request->slug,
+        'brand_id'=>$request->brand,
+        'country_id'=>$request->country,
+        'city_id'=>$request->city,
+        'rent_period'=>$request->rent_period,
+        'price'=>$request->regular_price,
+        'offer_price'=>$request->offer_price,
+        'description'=>$request->description,
+        'seller_type'=>$request->seller_type,
+        'body_type'=>$request->body_type,
+        'engine_size'=>$request->engine_size,
+        'drive'=>$request->drive,
+        'interior_color'=>$request->interior_color,
+        'exterior_color'=>$request->exterior_color,
+        'year'=>$request->year,
+        'mileage'=>$request->mileage,
+        'total_owner'=>$request->total_owner,
+        'fuel_type'=>$request->fuel_type,
+        'transmission'=>$request->transmission,
+        'car_model'=>$request->car_model,
+        'is_approve'=>0,
+       ];
+       
+
+       if($request->hasFile('image')){
+            $file = $request->file('image');
+            $fileName=time().'.'. $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/car/'), $fileName);
+
+            if($car->image && file_exists(public_path($car->image))){
+                unlink(public_path($car->image));
+            };
+            $carUpdate['image']=$fileName;
+       }else{
+        $carUpdate['image'] = $car->image;
+       }
+       $car->update( $carUpdate );
+
+      $car->features()->sync($request->feature ?? []);
+      return back()->with(['message'=>'Car Create Successfully','alert-type'=>'success']);
+
     }
 
     /**
@@ -122,6 +178,11 @@ class CarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $car=Car::findOrFail($id);
+        if($car->image && file_exists(public_path($car->image))){
+            unlink(public_path($car->image));
+        }
+        $car->delete();
+        return redirect()->route('car.index')->with(['message'=> 'Car Delete Successfully!','alert-type'=>'success']);
     }
 }

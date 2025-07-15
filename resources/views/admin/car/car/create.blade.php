@@ -59,7 +59,8 @@
 
                         <div class="form-group mb-3">
                             <label for="car_image" class="form-label">Car Image *</label>
-                             <input type="file" name="car_image" class="form-control" id="car_image">
+                             <input type="file" name="car_image" class="form-control" id="car_image" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                             <img class="mt-2" id="blah" src="" style="60px;height:60px" alt="carimage">
                              @error('car_image')
                                  <p class="text-danger">{{ $message }}</p>
                              @enderror

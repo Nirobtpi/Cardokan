@@ -21,10 +21,12 @@ class CarRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('car');
+        $isUpdate = $this->method() === 'PUT' || $this->method() === 'PATCH';
         return [
             'dealer'=>['required'],
             'title'=>['required','string'],
-            'slug'=>['required','unique:cars,slug'],
+            'slug'=>['required','unique:cars,slug,'.$id],
             'brand'=>['required'],
             'country'=>['required'],
             'city'=>['required'],
@@ -32,7 +34,7 @@ class CarRequest extends FormRequest
             'regular_price'=>['required','numeric'],
             'offer_price'=>['numeric','nullable'],
             'fuel_type'=>['required'],
-           'car_image.*' => ['required', 'mimes:png,jpg,webp,svg,jpeg', 'max:2048'],
+           'car_image.*' => [$isUpdate ? 'nullable' : 'required', 'mimes:png,jpg,webp,svg,jpeg', 'max:2048'],
             'mileage'=>['required'],
             'engine_size'=>['required'],
             'purpose'=>['required'],
