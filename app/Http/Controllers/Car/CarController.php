@@ -150,7 +150,6 @@ class CarController extends Controller
         'fuel_type'=>$request->fuel_type,
         'transmission'=>$request->transmission,
         'car_model'=>$request->car_model,
-        'is_approve'=>0,
        ];
        
 
@@ -184,5 +183,25 @@ class CarController extends Controller
         }
         $car->delete();
         return redirect()->route('car.index')->with(['message'=> 'Car Delete Successfully!','alert-type'=>'success']);
+    }
+
+    // status check 
+
+    public function statusUpdate(Request $request,$id){
+        $car=Car::findOrFail($id);
+        if($car->is_approve == 1){
+            $car->is_approve = 0;
+        }else{
+            $car->is_approve = 1;
+        }
+        $car->update();
+        // return redirect()->route('car.index')->with(['message'=>'Car Status Updated Successfully','alert-type'=>'success']);
+        return response()->json([
+            'message' => 'Car Status Updated Successfully!',
+        ]); 
+    }
+    public function awaitingForApproval(){
+        $cars=Car::where('is_approve',0)->get();
+        return view('admin.car.car.awaiting-for-approval',compact('cars'));
     }
 }

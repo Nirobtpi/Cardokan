@@ -247,6 +247,12 @@
                                         <p>Car List</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('awaiting.approval') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Awaiting Car</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -289,8 +295,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./UI/general.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
-                                        <p>General</p>
+                                    <a href="{{ route('user.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>User List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('pending.user') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                        <p>Pending User</p>
                                     </a>
                                 </li>
                             </ul>

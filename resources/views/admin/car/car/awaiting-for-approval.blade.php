@@ -1,6 +1,6 @@
 @extends('layout.admin-app')
-@section('title_text', 'Car List')
-@section('page_title', 'Car List')
+@section('title_text', 'Awaiting Car List')
+@section('page_title', 'Awaiting Car List')
 @section('content')
 
 <div class="container">
@@ -9,7 +9,7 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <div>
-                        <h2 class="card-title">Car List</h2>
+                        <h2 class="card-title">Awaiting Car List</h2>
                     </div>
                     <div class="d-flex justify-content-end">
                         <a href="{{ route('car.create') }}" class="btn btn-primary">+ Car Create</a>
@@ -98,6 +98,9 @@
             type:'GET',
             success:function(data){
                 toastr.success(data.message);
+                setTimeout(function(){
+                    location.reload();
+                }, 1000);
             }
         })
     }

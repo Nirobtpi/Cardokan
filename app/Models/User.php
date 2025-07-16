@@ -13,6 +13,9 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    const STATUS_INACTIVE ='inactive';
+    const STATUS_ACTIVE ='active';
+
     /**
      * The attributes that are mass assignable.
      *

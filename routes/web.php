@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\Car\BrandController;
-use App\Http\Controllers\Car\CarController;
-use App\Http\Controllers\Car\FeatureController;
-use App\Http\Controllers\Country\CityController;
-use App\Http\Controllers\Country\CountryController;
+use App\Models\User;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Car\CarController;
+use App\Http\Controllers\Car\BrandController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Car\FeatureController;
+use App\Http\Controllers\Country\CityController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Country\CountryController;
 use App\Http\Controllers\Admin\ChnagePasswordController;
 use App\Http\Controllers\Admin\EmailConfig\EmailConfigrationController;
 
@@ -47,8 +49,17 @@ Route::middleware('auth:admin')->group(function () {
         Route::resource('country', CountryController::class);
         Route::resource('city', CityController::class);
         Route::resource('car', CarController::class);
+        Route::get('/status-check/{id}',[CarController::class,'statusUpdate'])->name('status.check');
+        // awaiting for approval 
+        Route::get('awaiting-approval',[CarController::class,'awaitingForApproval'])->name('awaiting.approval');
         // city ajax route 
         Route::get('/ajax/city/{id}',[CarController::class,'cities'])->name('ajax.city');
+
+
+        // route user  
+        Route::resource('user',UserController::class);
+        Route::get('/user/status/{id}',[UserController::class,'status'])->name('user.status');
+        Route::get('pending-user',[UserController::class,'pendingUser'])->name('pending.user');
 
     });
 });
