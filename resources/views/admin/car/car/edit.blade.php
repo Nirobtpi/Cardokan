@@ -100,7 +100,7 @@
                                 <div class="col-lg-6 col-sm-12">
                                     <label for="city" class="form-label">City *</label>
                                     <select class="form-select" id="city" name="city">
-                                         <option @selected($city->id == $car->city_id) value="{{ $city->id }}">{{ $city->name }}</option>   
+                                         <option @selected($city->id == $car->city_id) value="{{ $city->id }}">{{ $city->name }}</option>
                                     </select>
                                     @error('city')
                                     <p class="text-danger">{{ $message }}</p>
@@ -276,9 +276,6 @@
     @endsection
     @push('js')
     <script>
-        @foreach($errors -> all() as $error)
-        toastr.error('{{ $error }}', 'Error');
-        @endforeach
 
         $(document).ready(function () {
             $('#description').summernote({

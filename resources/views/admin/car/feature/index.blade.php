@@ -50,9 +50,6 @@
 @endsection
 @push('js')
 <script>
-    @foreach($errors -> all() as $error)
-    toastr.error('{{ $error }}', 'Error');
-    @endforeach
 
     new DataTable('#feature_table');
 

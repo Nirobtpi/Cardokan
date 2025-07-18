@@ -61,14 +61,11 @@
     @endsection
     @push('js')
     <script>
-        @foreach($errors -> all() as $error)
-        toastr.error('{{ $error }}', 'Error');
-        @endforeach
 
     </script>
     <script>
         $(document).ready(function() {
-            // search ajax 
+            // search ajax
             $('#searchInput').on('keyup',function(){
                 let val=$(this).val();
                $.ajax({
@@ -103,7 +100,7 @@
                                         <button type="submit"  class="btn btn-sm btn-danger delete-btn-two">Delete</button>
                                     </form>
                                 </td>`
-                           
+
                         })
                     }else{
                         html+=`
@@ -114,7 +111,7 @@
                 },
                })
             });
-            // delete alert 
+            // delete alert
             $('.delete-btn').on('click',function(event){
                 event.preventDefault();
                 Swal.fire({
@@ -146,7 +143,7 @@
                             $(this).closest('form').submit()
                     }
                 });
-            })}); 
+            })});
 
     </script>
     @endpush

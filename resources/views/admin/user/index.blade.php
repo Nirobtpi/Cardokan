@@ -14,12 +14,12 @@
                 </div>
             </div>
 
-            @php
+            {{-- @php
                 $validdate=Carbon\Carbon::createFromFormat('Y-m-d','2026-07-5');
                 $today=Carbon\Carbon::today()->format('d-m-Y');
                 $diff=$validdate->diffInDays($today,false);
                 echo abs(round($diff));
-            @endphp
+            @endphp --}}
 
             <div class="card-body">
                 <table id="user_table" class="table table-bordered" role="table">
@@ -62,9 +62,6 @@
 @endsection
 @push('js')
 <script>
-    @foreach($errors -> all() as $error)
-    toastr.error('{{ $error }}', 'Error');
-    @endforeach
 
     function userStatusUpdate(id){
         console.log(id);

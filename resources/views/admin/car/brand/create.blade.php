@@ -47,7 +47,7 @@
                                     {{ $message }}
                                 @enderror
                             </div>
-                            
+
                         </div>
                         <div class="form-group mb-3">
                             <label for="visibility" class="form-label">Visibility Status</label><br>
@@ -65,9 +65,7 @@
     @endsection
     @push('js')
     <script>
-        @foreach($errors -> all() as $error)
-        toastr.error('{{ $error }}', 'Error');
-        @endforeach
+
     </script>
     <script>
         $(document).ready(function() {
@@ -81,7 +79,7 @@
                 .replace(/[^\w\s-]/g, '')
                 .trim()
                 .replace(/\s+/g, '-')
-                .replace(/--+/g, '-'); 
+                .replace(/--+/g, '-');
             }
             $('#brand_name').on('keyup',function(){
                 const name = $(this).val();

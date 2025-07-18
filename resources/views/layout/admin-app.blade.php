@@ -19,7 +19,8 @@
     <meta name="supported-color-schemes" content="light dark">
     <link rel="preload" href="{{ asset('assets/css/adminlte.css') }}" as="style">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
+        onload="this.media='all'">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"
         crossorigin="anonymous">
@@ -31,17 +32,19 @@
     {{-- toastr js  --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css">
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/adminlte.css') }}">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" />
     <!-- include summernote css/js -->
-     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/my.css') }}">
     @stack('css')
 
-   
+
 </head>
 
 <body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
@@ -57,7 +60,8 @@
                         <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i class="bi bi-list"></i>
                         </a>
                     </li>
-                    <li class="nav-item d-none d-md-block"> <a href="{{ route('admin.dashboard') }}" class="nav-link">Home</a> </li>
+                    <li class="nav-item d-none d-md-block"> <a href="{{ route('admin.dashboard') }}"
+                            class="nav-link">Home</a> </li>
                     <li class="nav-item d-none d-md-block"> <a href="#" class="nav-link">Contact</a> </li>
                 </ul>
                 <!--end::Start Navbar Links-->
@@ -169,31 +173,42 @@
                     <!--end::Fullscreen Toggle-->
                     <!--begin::User Menu Dropdown-->
                     <li class="nav-item dropdown user-menu">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> 
-                            @if(Auth::guard('admin')->user()->photo && file_exists(public_path(Auth::guard('admin')->user()->photo)))
-                                <img src="{{ asset(Auth::guard('admin')->user()->photo) }}" class="user-image rounded-circle shadow" alt="User Image">
+                        <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            @if(Auth::guard('admin')->user()->photo &&
+                            file_exists(public_path(Auth::guard('admin')->user()->photo)))
+                            <img src="{{ asset(Auth::guard('admin')->user()->photo) }}"
+                                class="user-image rounded-circle shadow" alt="User Image">
                             @else
-                            <img src="/assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow" alt="User Image">
+                            <img src="/assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow"
+                                alt="User Image">
                             @endif
 
-                            <span class="d-none d-md-inline">{{ Auth::guard('admin')->user()->name }}</span> </a>
+                            <span class="d-none d-md-inline">{{ Auth::guard('admin')->user()->name }}</span>
+                        </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <!--begin::User Image-->
-                            <li class="user-header text-bg-primary"> 
-                                @if(Auth::guard('admin')->user()->photo && file_exists(public_path(Auth::guard('admin')->user()->photo)))
-                                    <img src="{{ asset(Auth::guard('admin')->user()->photo) }}" class="rounded-circle shadow" alt="User Image">
+                            <li class="user-header text-bg-primary">
+                                @if(Auth::guard('admin')->user()->photo &&
+                                file_exists(public_path(Auth::guard('admin')->user()->photo)))
+                                <img src="{{ asset(Auth::guard('admin')->user()->photo) }}"
+                                    class="rounded-circle shadow" alt="User Image">
                                 @else
                                 <img src="/assets/img/user2-160x160.jpg" class="rounded-circle shadow" alt="User Image">
                                 @endif
-                                    <p>
-                                   {{ Auth::guard('admin')->user()->name }} - {{ Auth::guard('admin')->user()->designation }}
-                                    <small>Member since Nov. {{ Auth::guard('admin')->user()->created_at->format('Y') }}</small> </p>
+                                <p>
+                                    {{ Auth::guard('admin')->user()->name }} -
+                                    {{ Auth::guard('admin')->user()->designation }}
+                                    <small>Member since Nov.
+                                        {{ Auth::guard('admin')->user()->created_at->format('Y') }}</small> </p>
                             </li>
-                            <li class="user-footer"> <a href="{{ route('admin.profile') }}" class="btn btn-default btn-flat">Profile</a>
-                                 <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat float-end">Sign out</a> </li>
+                            <li class="user-footer"> <a href="{{ route('admin.profile') }}"
+                                    class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat float-end">Sign
+                                    out</a> </li>
                             <!--end::Menu Footer-->
                         </ul>
                     </li>
+
                     <!--end::User Menu Dropdown-->
                 </ul>
                 <!--end::End Navbar Links-->
@@ -206,7 +221,7 @@
             <div class="sidebar-brand">
                 <a href="./index.html" class="brand-link"><img src="/assets/img/AdminLTELogo.png" alt="AdminLTE Logo"
                         class="brand-image opacity-75 shadow">
-                        <span class="brand-text fw-light">CarDokan</span>
+                    <span class="brand-text fw-light">CarDokan</span>
                 </a>
                 <!--end::Brand Link-->
             </div>
@@ -218,7 +233,8 @@
                     <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation"
                         aria-label="Main navigation" data-accordion="false" id="navigation">
                         <li class="nav-item">
-                            <a href="{{ route('admin.dashboard') }}" class="nav-link active"> <i class="nav-icon bi bi-speedometer"></i>
+                            <a href="{{ route('admin.dashboard') }}" class="nav-link active"> <i
+                                    class="nav-icon bi bi-speedometer"></i>
                                 <p>
                                     Dashboard
                                 </p>
@@ -282,9 +298,9 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./layout/unfixed-sidebar.html" class="nav-link"> <i
+                                    <a href="{{ route('plan.index') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
-                                        <p>Default Sidebar</p>
+                                        <p>Plan List</p>
                                     </a>
                                 </li>
                             </ul>
@@ -295,12 +311,14 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('user.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                    <a href="{{ route('user.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
                                         <p>User List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('pending.user') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                    <a href="{{ route('pending.user') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
                                         <p>Pending User</p>
                                     </a>
                                 </li>
@@ -392,7 +410,8 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.email.config') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                    <a href="{{ route('admin.email.config') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
                                         <p>Configuration</p>
                                     </a>
                                 </li>
@@ -472,41 +491,51 @@
         <!--end::Footer-->
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"> </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+    <!--create brand toggle-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
-    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script src="{{ asset('assets/js/adminlte.js') }}"></script>
     @stack('js')
 
     <script>
-        // toaster erro show 
+        // toaster erro show
         @if(session('message'))
 
-            var type = '{{ session('alert-type', '') }}';
+        var type = '{{ session('
+        alert - type ', '
+        ') }}';
 
-            switch(type){
-                case 'success':
-                    toastr.success('{{ session('message') }}', 'Success');
-                    break;
-                case 'error':
-                    toastr.error('{{ session('message') }}', 'Error');
-                    break;
-                case 'warning':
-                    toastr.warning('{{ session('message') }}', 'Warning');
-                    break;
-                case 'info':
-                    toastr.info('{{ session('message') }}', 'Info');
-                    break;
-            }
+        switch (type) {
+            case 'success':
+                toastr.success('{{ session('
+                    message ') }}', 'Success');
+                break;
+            case 'error':
+                toastr.error('{{ session('
+                    message ') }}', 'Error');
+                break;
+            case 'warning':
+                toastr.warning('{{ session('
+                    message ') }}', 'Warning');
+                break;
+            case 'info':
+                toastr.info('{{ session('
+                    message ') }}', 'Info');
+                break;
+        }
         @endif
+        @foreach($errors -> all() as $error)
+        toastr.error('{{ $error }}', 'Error');
+        @endforeach
+
     </script>
 
     <script>

@@ -21,8 +21,8 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div  class="form-group mb-3"> 
-                            <label for="country" class="form-label">Country</label> 
+                        <div  class="form-group mb-3">
+                            <label for="country" class="form-label">Country</label>
                             <select class="form-select" id="country" name="country">
                                 <option selected="" value="">Choose...</option>
                                 @foreach ($countries as $country)
@@ -44,10 +44,5 @@
 
 @endsection
 @push('js')
-<script>
-    @foreach($errors -> all() as $error)
-    toastr.error('{{ $error }}', 'Error');
-    @endforeach
 
-</script>
 @endpush

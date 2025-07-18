@@ -53,7 +53,7 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    <!--begin::Row-->  
+                    <!--begin::Row-->
                     <div class="row">
                         <div class="col-4">
                             <div class="d-grid gap-2"> <button type="submit" class="btn btn-primary">Log In</button>
@@ -82,11 +82,7 @@
     <script src="{{ asset('assets/js/adminlte.js') }}"></script>
 
     <script>
-        @foreach ($errors->all() as $error)
-            toastr.error('{{ $error }}', 'Error');
-        @endforeach
-       
-        // toaster erro show 
+        // toaster erro show
         @if(session('message'))
 
             var type = '{{ session('alert-type', '') }}';

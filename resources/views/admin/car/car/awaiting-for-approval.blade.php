@@ -64,7 +64,7 @@
                                         echo abs(intval($diff)) . ' day' . (abs(intval($diff)) > 1 ? 's' : '') . ' remaining';
                                     } else {
                                         echo 'Expire';
-                                    } 
+                                    }
                                 @endphp --}}
                             </td>
                         </tr>
@@ -79,10 +79,6 @@
 @endsection
 @push('js')
 <script>
-    @foreach($errors -> all() as $error)
-    toastr.error('{{ $error }}', 'Error');
-    @endforeach
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
