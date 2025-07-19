@@ -16,14 +16,14 @@
                         @csrf
                         <div class="form-group mb-3">
                             <label for="name" class="form-label">Plan Name *</label>
-                            <input type="text" name="name" class="form-control" id="name">
+                            <input type="text" value="{{ old('name') }}"  name="name" class="form-control" id="name">
                             @error('name')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <label for="price" class="form-label">Plan Name *</label>
-                            <input type="number" name="price" class="form-control" id="price">
+                            <label for="price" class="form-label">Plan Price *</label>
+                            <input type="number" value="{{ old('price') }}"  name="price" class="form-control" id="price">
                             @error('price')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -35,27 +35,28 @@
                                 <option value="monthly">Monthly</option>
                                 <option value="yearly">Yearly</option>
                             </select>
+                            <input type="hidden" name="plan_name" class="form-control" id="plan_name">
                             @error('expiration_date')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label for="maximum_cars" class="form-label">Maximum Car *</label>
-                            <input type="number" name="maximum_cars" class="form-control" id="maximum_cars">
+                            <input type="number" value="{{ old('maximum_cars') }}"  name="maximum_cars" class="form-control" id="maximum_cars">
                             @error('maximum_cars')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label for="features_car" class="form-label">Featured Car *</label>
-                            <input type="number" name="features_car" class="form-control" id="features_car">
+                            <input type="number" value="{{ old('features_car') }}"  name="features_car" class="form-control" id="features_car">
                             @error('features_car')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label for="serial" class="form-label">Serial *</label>
-                            <input type="number" name="serial" class="form-control" id="serial">
+                            <input type="number"  value="{{ old('serial') }}" name="serial" class="form-control" id="serial">
                             @error('serial')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -76,5 +77,14 @@
 
     @endsection
     @push('js')
+    <script>
+        $('document').ready(function(){
+            $('#expiration_date').on('change',function(){
+              let value = $(this).val();
+              $('#plan_name').val(value);
+
+            })
+        })
+    </script>
 
     @endpush

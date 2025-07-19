@@ -35,8 +35,24 @@
                             <td>{{ $loop->index +1 }}</td>
                             <td>{{ $plan->name }}</td>
                             <td>{{ $plan->price }}</td>
-                            <td>{{ $plan->maximum_cars }}</td>
-                            <td>{{ $plan->status}}</td>
+                            <td>
+                                @php
+                                    if($plan->expair_date =='lifetime'){
+                                       echo '<span class="badge text-bg-primary">Lifetime</span>';
+                                    }else{
+                                        $created_at = Carbon\Carbon::parse($plan->created_at)->startOfDay();
+                                        $expairDate= Carbon\Carbon::parse($plan->expair_date)->startOfDay();
+                                        $diff=$created_at->diffInDays($expairDate,false);
+
+                                        if($diff >0){
+                                            echo '<span class="badge text-bg-success">'.$diff.' days remaining.</span>';
+                                        }else{
+                                             echo '<span class="badge text-bg-danger">Expaired</span>';
+                                        }
+                                    }
+                                @endphp
+                            </td>
+                            <td><span class="badge {{ $plan->status == 'on'?'bg-success':'bg-danger' }}">{{ $plan->status =='on'?'Active':'Inactive' }}</span></td>
                             <td>
                                 <a href="{{ route('plan.edit',$plan->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                 <form id="brand-delete" action="{{ route('plan.destroy',$plan->id) }}" method="POST"

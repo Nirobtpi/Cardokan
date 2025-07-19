@@ -1,6 +1,6 @@
 @extends('layout.admin-app')
-@section('title_text', 'Edit City')
-@section('page_title', 'Edit City')
+@section('title_text', 'Edit Plan')
+@section('page_title', 'Edit Plan')
 @section('content')
 
 <div class="container">
@@ -9,41 +9,84 @@
         <div class="col-md-8 offset-2">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Edit City</h3>
+                    <h3 class="card-title">Add Plan</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('city.update',$city->id) }}" method="POST">
+                    <form action="{{ route('plan.update',$plan->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group mb-3">
-                            <label for="name" class="form-label">City Name *</label>
-                            <input type="text" name="name" value="{{ $city->name }}" class="form-control" id="name">
+                            <label for="name" class="form-label">Plan Name *</label>
+                            <input type="text" value="{{ old('name', $plan->name) }}"  name="name" class="form-control" id="name">
                             @error('name')
-                                <p class="text-danger">{{ $message }}</p>
+                            <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div  class="form-group mb-3">
-                            <label for="country" class="form-label">Country</label>
-                            <select class="form-select" id="country" name="country">
-                                <option selected="" value="">Choose...</option>
-                                @foreach ($countries as $country)
-                                      <option @selected($country->id == $city->country_id) value="{{ $country->id }}">{{ $country->name }}</option>
-                                @endforeach
+                        <div class="form-group mb-3">
+                            <label for="price" class="form-label">Plan Price *</label>
+                            <input type="number" value="{{ old('price', $plan->price) }}"  name="price" class="form-control" id="price">
+                            @error('price')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+
+                            <label for="expiration_date" class="form-label">Expiration Date *</label>
+                            <select class="form-select" id="expiration_date" name="expiration_date">
+                                <option @selected($plan->expiration_date == 'lifetime' ? 'selected' : '') value="lifetime">Lifetime</option>
+                                <option {{ $plan->plan_name == 'monthly' ? 'selected' : '' }}  value="monthly">Monthly</option>
+                                <option {{ $plan->plan_name == 'yearly' ? 'selected' : '' }} value="yearly">Yearly</option>
                             </select>
-                            @error('name')
-                                <p class="text-danger">{{ $message }}</p>
+                            <input type="hidden" name="plan_name" class="form-control" id="plan_name">
+                            @error('expiration_date')
+                            <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="from-group">
-                            <button class="btn btn-primary">Update</button>
+                        <div class="form-group mb-3">
+                            <label for="maximum_cars" class="form-label">Maximum Car *</label>
+                            <input type="number" value="{{ old('maximum_cars', $plan->maximum_cars) }}"  name="maximum_cars" class="form-control" id="maximum_cars">
+                            @error('maximum_cars')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="features_car" class="form-label">Featured Car *</label>
+                            <input type="number" value="{{ old('features_car', $plan->features_car) }}"  name="features_car" class="form-control" id="features_car">
+                            @error('features_car')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="serial" class="form-label">Serial *</label>
+                            <input type="number"  value="{{ old('serial', $plan->serial) }}" name="serial" class="form-control" id="serial">
+                            @error('serial')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <label class="form-label d-black" for="status">Visibility Status</label>
+                            <input class="form-check-input" type="checkbox" {{ $plan->status == 'on' ? 'checked' : '' }} role="switch" id="status" name="status" >
+
+                        </div>
+                        <div class="from-grop">
+                            <button class="btn btn-primary">Create</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
-@endsection
-@push('js')
+    @endsection
+    @push('js')
+    <script>
+        $('document').ready(function(){
+            $('#expiration_date').on('change',function(){
+              let value = $(this).val();
+              $('#plan_name').val(value);
 
-@endpush
+            })
+        })
+    </script>
+
+    @endpush
