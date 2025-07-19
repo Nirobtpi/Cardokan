@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('maximum_cars');
             $table->integer('features_car');
             $table->string('serial');
-            $table->string('status')->default('active');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

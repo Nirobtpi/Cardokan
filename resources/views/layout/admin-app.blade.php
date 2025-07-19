@@ -28,9 +28,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-
-    {{-- toastr js  --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css">
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
         rel="stylesheet">
@@ -40,8 +37,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" />
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="{{ asset('assets/css/my.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     @stack('css')
 
 
@@ -491,50 +488,44 @@
         <!--end::Footer-->
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <!--create brand toggle-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
 
     <script src="{{ asset('assets/js/adminlte.js') }}"></script>
     @stack('js')
 
     <script>
+        @foreach ($errors->all() as $error)
+            toastr.error('{{ $error }}', 'Error');
+        @endforeach
         // toaster erro show
         @if(session('message'))
 
-        var type = '{{ session('
-        alert - type ', '
-        ') }}';
+        var type = '{{ session('alert-type', 'success') }}';
 
         switch (type) {
             case 'success':
-                toastr.success('{{ session('
-                    message ') }}', 'Success');
+                toastr.success('{{ session('message') }}', 'Success');
                 break;
             case 'error':
-                toastr.error('{{ session('
-                    message ') }}', 'Error');
+                toastr.error('{{ session('message') }}', 'Error');
                 break;
             case 'warning':
-                toastr.warning('{{ session('
-                    message ') }}', 'Warning');
+                toastr.warning('{{ session('message') }}', 'Warning');
                 break;
             case 'info':
-                toastr.info('{{ session('
-                    message ') }}', 'Info');
+                toastr.info('{{ session('message') }}', 'Info');
                 break;
         }
         @endif
-        @foreach($errors -> all() as $error)
-        toastr.error('{{ $error }}', 'Error');
-        @endforeach
 
     </script>
 
@@ -571,10 +562,6 @@
             if (!cssLink) {
                 return; // Exit if the link isn't found
             }
-
-            // Extract the base path from the CSS href.
-            // e.g., from "../css/adminlte.css", we get "../"
-            // e.g., from "./css/adminlte.css", we get "./"
             const cssHref = cssLink.getAttribute('href');
             const deploymentPath = cssHref.slice(0, cssHref.indexOf('css/adminlte.css'));
 
