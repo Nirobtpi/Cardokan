@@ -321,7 +321,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
                                 <p> Manage KYC <i class="nav-arrow bi bi-chevron-right"></i> </p>
                             </a>
@@ -333,8 +333,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
+                        </li> --}}
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
                                 <p>
                                     Manage Ads
@@ -348,7 +348,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="bi bi-chat"></i>
                                 <p>Contact Message</p>
