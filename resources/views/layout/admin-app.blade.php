@@ -334,34 +334,6 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
-                                <p> Manage KYC <i class="nav-arrow bi bi-chevron-right"></i> </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./forms/general.html" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>General Elements</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
-                                <p>
-                                    Manage Ads
-                                    <i class="nav-arrow bi bi-chevron-right"></i> </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./tables/simple.html" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Simple Tables</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="bi bi-chat"></i>
                                 <p>Contact Message</p>
@@ -405,32 +377,6 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                                <p>Manage Pages<i class="nav-arrow bi bi-chevron-right"></i> </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./examples/lockscreen.html" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Lockscreen</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                                <p>Manage Section<i class="nav-arrow bi bi-chevron-right"></i> </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./examples/lockscreen.html" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Lockscreen</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
                         <li class="nav-header">Setting & Configuration</li>
                         <li class="nav-item">
                             <a href="./docs/introduction.html" class="nav-link"> <i class="bi bi-gear-fill"></i>
