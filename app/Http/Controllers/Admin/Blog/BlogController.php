@@ -145,7 +145,11 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        Blog::findOrFail($id)->delete();
+       $blog= Blog::findOrFail($id);
+        if($blog->image && file_exists(public_path($blog->image))){
+            unlink(public_path($blog->image));
+        }
+        $blog->delete();
         $message='Blog deleted successfully';
         return redirect()->route('blog.index')->with(['message'=>$message,'alert-type'=>'success']);
     }

@@ -33,9 +33,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/adminlte.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.bootstrap5.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
-
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" />
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/my.css') }}">
@@ -301,18 +300,6 @@
                                         <p>Plan List</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('plan.index') }}" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Purchase History</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('plan.index') }}" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Pending History</p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -334,7 +321,7 @@
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-pencil-square"></i>
                                 <p> Manage KYC <i class="nav-arrow bi bi-chevron-right"></i> </p>
                             </a>
@@ -346,8 +333,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
-                        {{-- <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
                                 <p>
                                     Manage Ads
@@ -361,7 +348,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="bi bi-chat"></i>
                                 <p>Contact Message</p>
@@ -374,38 +361,14 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('blog-category.create') }}" class="nav-link"> <i
+                                    <a href="./examples/lockscreen.html" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
-                                        <p>Create Categroy</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('blog-category.index') }}" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Categroy List</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('blog.create') }}" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Create Blog</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('blog.index') }}" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Blog List</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Comment List</p>
+                                        <p>Lockscreen</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
                                 <p>Manage Pages<i class="nav-arrow bi bi-chevron-right"></i> </p>
                             </a>
@@ -417,8 +380,8 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
-                        {{-- <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
                                 <p>Manage Section<i class="nav-arrow bi bi-chevron-right"></i> </p>
                             </a>
@@ -430,29 +393,23 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> --}}
+                        </li>
                         <li class="nav-header">Setting & Configuration</li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="./docs/introduction.html" class="nav-link"> <i class="bi bi-gear-fill"></i>
                                 <p>Setting</p>
                             </a>
 
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link"> <i class="bi bi-envelope"></i>
+                            <a href="#" class="nav-link"> <i class="bi bi-gear-fill"></i>
                                 <p>All Configuration<i class="nav-arrow bi bi-chevron-right"></i> </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('admin.email.config') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
-                                        <p>Email Configuration</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.email.config') }}" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Social Login</p>
+                                        <p>Configuration</p>
                                     </a>
                                 </li>
                             </ul>
@@ -541,8 +498,6 @@
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
-    {{-- tagify  --}}
-    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 
     <script src="{{ asset('assets/js/adminlte.js') }}"></script>
     @stack('js')
@@ -571,17 +526,6 @@
                 break;
         }
         @endif
-
-
-            function makeSlug(text){
-                return text
-                .toLowerCase()
-                .replace(/[^\w\s-]/g, '')
-                .trim()
-                .replace(/\s+/g, '-')
-                .replace(/--+/g, '-');
-            }
-
 
     </script>
 
