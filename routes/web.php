@@ -11,9 +11,11 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Car\FeatureController;
 use App\Http\Controllers\Country\CityController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\Blog\BlogController;
 use App\Http\Controllers\Admin\Plan\PlanController;
 use App\Http\Controllers\Country\CountryController;
 use App\Http\Controllers\Admin\ChnagePasswordController;
+use App\Http\Controllers\Admin\Blog\BlogCategoryController;
 use App\Http\Controllers\Admin\EmailConfig\EmailConfigrationController;
 
 Route::get('/', function () {
@@ -65,6 +67,9 @@ Route::middleware('auth:admin')->group(function () {
 
         // plan route
         Route::resource('plan',PlanController::class);
+
+        Route::resource('blog-category', BlogCategoryController::class);
+        Route::resource('blog', BlogController::class);
 
     });
 });
