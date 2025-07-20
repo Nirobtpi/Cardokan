@@ -361,46 +361,38 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./examples/lockscreen.html" class="nav-link"> <i
+                                    <a href="{{ route('blog-category.create') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
-                                        <p>Lockscreen</p>
+                                        <p>Category Create</p>
                                     </a>
                                 </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                                <p>Manage Pages<i class="nav-arrow bi bi-chevron-right"></i> </p>
-                            </a>
-                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./examples/lockscreen.html" class="nav-link"> <i
+                                    <a href="{{ route('blog-category.index') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
-                                        <p>Lockscreen</p>
+                                        <p>Category List</p>
                                     </a>
                                 </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                                <p>Manage Section<i class="nav-arrow bi bi-chevron-right"></i> </p>
-                            </a>
-                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./examples/lockscreen.html" class="nav-link"> <i
+                                    <a href="{{ route('blog.create') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
-                                        <p>Lockscreen</p>
+                                        <p>Blog Create</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('blog.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Blog List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('blog.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Comment List</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-header">Setting & Configuration</li>
-                        {{-- <li class="nav-item">
-                            <a href="./docs/introduction.html" class="nav-link"> <i class="bi bi-gear-fill"></i>
-                                <p>Setting</p>
-                            </a>
-
-                        </li> --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="bi bi-gear-fill"></i>
                                 <p>All Configuration<i class="nav-arrow bi bi-chevron-right"></i> </p>
