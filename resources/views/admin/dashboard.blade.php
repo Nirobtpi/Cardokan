@@ -11,10 +11,10 @@
             <div class="col-12 col-sm-6 col-md-3">
               <div class="info-box"> <span class="info-box-icon text-bg-primary shadow-sm"> <i
                     class="bi bi-gear-fill"></i> </span>
-                <div class="info-box-content"> <span class="info-box-text">CPU Traffic</span> <span
+                <div class="info-box-content"> <span class="info-box-text">Total Car</span> <span
                     class="info-box-number">
-                    10
-                    <small>%</small> </span> </div> <!-- /.info-box-content -->
+                    {{ $cars->count() }}
+                     </span> </div> <!-- /.info-box-content -->
               </div> <!-- /.info-box -->
             </div> <!-- /.col -->
             <div class="col-12 col-sm-6 col-md-3">
@@ -609,5 +609,5 @@
         </div>
         <!--end::Container-->
       </div>
-    
+
 @endsection
