@@ -45,6 +45,7 @@ class CarRequest extends FormRequest
             'drive'=>['required'],
             'car_model'=>['required'],
             'year'=>['required','numeric'],
+            'car_condition'=>['required'],
         ];
     }
     public function messages():array{
@@ -75,6 +76,7 @@ class CarRequest extends FormRequest
             'car_model.required'=> 'Car model is required!',
             'year.required'=> 'Year is required!',
             'year.numeric'=> 'Year is numeric!',
+            'car_condition.required'=>'Please select car condition',
         ];
     }
 }

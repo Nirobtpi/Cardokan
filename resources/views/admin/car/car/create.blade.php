@@ -139,6 +139,37 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group mb-3">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                    <label for="car_condition" class="form-label">Car Conditione *</label>
+                                   <select class="form-select" id="car_condition" name="car_condition">
+                                            <option selected="" value="">Choose...</option>
+                                            <option value="new">New</option>
+                                            <option value="used">Used</option>
+                                        </select>
+                                    @error('car_condition')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <label class="form-check-label mb-3" for="popular">Make Popular</label>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" name="popular" id="popular">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <label class="form-check-label mb-3" for="car_feature">Make Feature</label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" name="car_feature" type="checkbox" role="switch" id="car_feature">
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group mb-5">
                             <label for="description" class="form-label">Description *</label>
                             <textarea class="form-control" name="description" id="description"

@@ -30,7 +30,8 @@
                             <select class="form-select" id="dealer" name="dealer">
                                 <option value="">Choose...</option>
                                 @foreach ($users as $user)
-                                <option @selected($user->id == $car->user_id) value="{{ $user->id }}">{{ $user->name }} - {{ $user->email }}</option>
+                                <option @selected($user->id == $car->user_id) value="{{ $user->id }}">{{ $user->name }}
+                                    - {{ $user->email }}</option>
                                 @endforeach
 
                             </select>
@@ -42,14 +43,16 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12">
                                     <label for="title" class="form-label">Title *</label>
-                                    <input type="text" value="{{ $car->name }}" name="title" class="form-control" id="title">
+                                    <input type="text" value="{{ $car->name }}" name="title" class="form-control"
+                                        id="title">
                                     @error('title')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
                                     <label for="slug" class="form-label">Slug *</label>
-                                    <input type="text" value="{{ $car->slug }}" name="slug" class="form-control" id="slug">
+                                    <input type="text" value="{{ $car->slug }}" name="slug" class="form-control"
+                                        id="slug">
                                     @error('slug')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -58,9 +61,12 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="car_image" class="form-label">Car Image <small class="text-danger">if upload new image give image here</small></label>
-                            <input type="file" name="car_image" class="form-control" id="car_image"  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-                            <img class="mt-2" id="blah" src="{{ $car->image ? asset($car->image) : "" }}" style="60px;height:60px" alt="carimage">
+                            <label for="car_image" class="form-label">Car Image <small class="text-danger">if upload new
+                                    image give image here</small></label>
+                            <input type="file" name="car_image" class="form-control" id="car_image"
+                                onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                            <img class="mt-2" id="blah" src="{{ $car->image ? asset($car->image) : "" }}"
+                                style="60px;height:60px" alt="carimage">
                             @error('car_image')
                             <p class="text-danger">{{ $message }}</p>
                             @enderror
@@ -73,7 +79,8 @@
                                     <select class="form-select" id="brand" name="brand">
                                         <option value="">Choose...</option>
                                         @foreach ($brands as $brand)
-                                        <option @selected($brand->id == $car->brand_id) value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
+                                        <option @selected($brand->id == $car->brand_id)
+                                            value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
                                         @endforeach
                                     </select>
                                     @error('brand')
@@ -85,7 +92,8 @@
                                     <select class="form-select" id="country" name="country">
                                         <option value="">Choose...</option>
                                         @foreach ($countries as $country)
-                                        <option @selected($country->id == $car->country_id) value="{{ $country->id }}">{{ $country->name }}</option>
+                                        <option @selected($country->id == $car->country_id)
+                                            value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('country')
@@ -100,7 +108,8 @@
                                 <div class="col-lg-6 col-sm-12">
                                     <label for="city" class="form-label">City *</label>
                                     <select class="form-select" id="city" name="city">
-                                         <option @selected($city->id == $car->city_id) value="{{ $city->id }}">{{ $city->name }}</option>
+                                        <option @selected($city->id == $car->city_id)
+                                            value="{{ $city->id }}">{{ $city->name }}</option>
                                     </select>
                                     @error('city')
                                     <p class="text-danger">{{ $message }}</p>
@@ -112,7 +121,8 @@
                                     <select class="form-select" id="rent_period" name="rent_period">
                                         <option value="">Choose...</option>
                                         <option value="hourly" @selected($car->rent_period == 'hourly') >Hourly</option>
-                                        <option value="monthly" @selected($car->rent_period == 'monthly')>Monthly</option>
+                                        <option value="monthly" @selected($car->rent_period == 'monthly')>Monthly
+                                        </option>
                                         <option value="yearly" @selected($car->rent_period == 'yearly')>Yearly</option>
                                         <option value="daily" @selected($car->rent_period == 'daily')>Daily</option>
                                     </select>
@@ -126,26 +136,62 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12">
                                     <label for="regular_price" class="form-label">Regular Price *</label>
-                                    <input type="text" value="{{ $car->price }}" name="regular_price" class="form-control" id="regular_price">
+                                    <input type="text" value="{{ $car->price }}" name="regular_price"
+                                        class="form-control" id="regular_price">
                                     @error('regular_price')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
                                     <label for="offer_price" class="form-label">Offer Price</label>
-                                    <input type="text" value="{{ old('offer_price',$car->offer_price) }}" name="offer_price" class="form-control" id="offer_price">
+                                    <input type="text" value="{{ old('offer_price',$car->offer_price) }}"
+                                        name="offer_price" class="form-control" id="offer_price">
                                     @error('offer_price')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group mb-3">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                                    <label for="car_condition" class="form-label">Car Conditione *</label>
+                                    <select class="form-select" id="car_condition" name="car_condition">
+                                        <option value="">Choose...</option>
+                                        <option {{ $car->car_condition == 'new' ? 'selected' : '' }} value="new">New
+                                        </option>
+                                        <option {{ $car->car_condition == 'used' ? 'selected' : '' }} value="used">Used
+                                        </option>
+                                    </select>
+                                    @error('car_condition')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <label class="form-check-label mb-3" for="popular">Make Popular</label>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" {{ $car->popular == 'on' ? 'checked' : '' }} type="checkbox" role="switch" id="popular" name="popular">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <label class="form-check-label mb-3" for="car_feature">Make Feature</label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" {{ $car->feature == 'on' ? 'checked' : '' }} type="checkbox" role="switch" id="car_feature" name="car_feature">
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="form-group mb-5">
                             <label for="description" class="form-label">Description *</label>
                             <textarea class="form-control" name="description" id="description"
                                 aria-label="With textarea">{!! $car->description !!}</textarea>
                             @error('description')
-                                <p class="text-danger">{{ $message }}</p>
+                            <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </div>
 
@@ -159,8 +205,10 @@
                                         <label for="seller_type" class="form-label">Seller Type: *</label>
                                         <select class="form-select" id="seller_type" name="seller_type">
                                             <option value="">Choose...</option>
-                                            <option @selected($car->seller_type == 'dealer') value="dealer">Dealer</option>
-                                            <option @selected($car->seller_type == 'indivisual') value="indivisual">Indivisual</option>
+                                            <option @selected($car->seller_type == 'dealer') value="dealer">Dealer
+                                            </option>
+                                            <option @selected($car->seller_type == 'indivisual')
+                                                value="indivisual">Indivisual</option>
                                         </select>
                                         @error('seller_type')
                                         <p class="text-danger">{{ $message }}</p>
@@ -168,21 +216,24 @@
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="body_type" class="form-label">Body Type: *</label>
-                                        <input type="text" value="{{ $car->body_type }}" name="body_type" class="form-control" id="body_type">
+                                        <input type="text" value="{{ $car->body_type }}" name="body_type"
+                                            class="form-control" id="body_type">
                                         @error('body_type')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="engine_size" class="form-label">Engine Size: *</label>
-                                        <input type="text" value="{{ $car->engine_size }}" name="engine_size" class="form-control" id="engine_size">
+                                        <input type="text" value="{{ $car->engine_size }}" name="engine_size"
+                                            class="form-control" id="engine_size">
                                         @error('engine_size')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="drive" class="form-label">Drive: *</label>
-                                        <input type="text" value="{{ $car->drive }}" name="drive" class="form-control" id="drive">
+                                        <input type="text" value="{{ $car->drive }}" name="drive" class="form-control"
+                                            id="drive">
                                         @error('drive')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
@@ -193,24 +244,26 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="interior_color" class="form-label">Interior Color</label>
-                                        <input type="text" value="{{ $car->interior_color }}" name="interior_color" class="form-control"
-                                            id="interior_color">
+                                        <input type="text" value="{{ $car->interior_color }}" name="interior_color"
+                                            class="form-control" id="interior_color">
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="exterior_color" class="form-label">Exterior Color:</label>
-                                        <input type="text" value="{{ $car->exterior_color }}" name="exterior_color" class="form-control"
-                                            id="exterior_color">
+                                        <input type="text" value="{{ $car->exterior_color }}" name="exterior_color"
+                                            class="form-control" id="exterior_color">
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="year" class="form-label">Year:</label>
-                                        <input type="text" value="{{ $car->year }}" name="year" class="form-control" id="year">
+                                        <input type="text" value="{{ $car->year }}" name="year" class="form-control"
+                                            id="year">
                                         @error('year')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="mileage" class="form-label">Mileage: *</label>
-                                        <input type="text" value="{{ $car->mileage }}" name="mileage" class="form-control" id="mileage">
+                                        <input type="text" value="{{ $car->mileage }}" name="mileage"
+                                            class="form-control" id="mileage">
                                         @error('mileage')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
@@ -221,22 +274,26 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="total_owner" class="form-label">Number of Owner</label>
-                                        <input type="text" value="{{ $car->total_owner }}" name="total_owner" class="form-control" id="total_owner">
+                                        <input type="text" value="{{ $car->total_owner }}" name="total_owner"
+                                            class="form-control" id="total_owner">
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="fuel_type" class="form-label">Fuel Type: *</label>
-                                        <input type="text" value="{{ $car->fuel_type }}" name="fuel_type" class="form-control" id="fuel_type">
+                                        <input type="text" value="{{ $car->fuel_type }}" name="fuel_type"
+                                            class="form-control" id="fuel_type">
                                         @error('fuel_type')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="transmission" class="form-label">Transmission</label>
-                                        <input type="text" value="{{ $car->transmission }}" name="transmission" class="form-control" id="transmission">
+                                        <input type="text" value="{{ $car->transmission }}" name="transmission"
+                                            class="form-control" id="transmission">
                                     </div>
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <label for="car_model" class="form-label">Car Model *</label>
-                                        <input type="text" value="{{ $car->car_model }}" name="car_model" class="form-control" id="car_model">
+                                        <input type="text" value="{{ $car->car_model }}" name="car_model"
+                                            class="form-control" id="car_model">
                                         @error('car_model')
                                         <p class="text-danger">{{ $message }}</p>
                                         @enderror
@@ -251,7 +308,8 @@
                             <div class="col-lg-12">
                                 @foreach ($features as $feature)
                                 <div class="form-check d-inline-block me-3 mb-2">
-                                    <input {{ $car->features->contains($feature->id) ? 'checked' : '' }} class="form-check-input" type="checkbox" value="{{ $feature->id }}"
+                                    <input {{ $car->features->contains($feature->id) ? 'checked' : '' }}
+                                        class="form-check-input" type="checkbox" value="{{ $feature->id }}"
                                         name="feature[]" id="{{ $feature->name }}">
                                     <label class="form-check-label" for="{{ $feature->name }}">
                                         {{ $feature->name }}
@@ -276,7 +334,6 @@
     @endsection
     @push('js')
     <script>
-
         $(document).ready(function () {
             $('#description').summernote({
                 tabsize: 2,

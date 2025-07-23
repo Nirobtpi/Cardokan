@@ -25,6 +25,7 @@
                             <th scope="col">Brand</th>
                             <th scope="col">Price</th>
                             <th scope="col">Dealer</th>
+                            <th scope="col">Condition</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -37,6 +38,7 @@
                             <td>{{ $car->brand->brand_name }}</td>
                             <td>{{ $car->price }}</td>
                             <td>{{ $car->user->name }}</td>
+                             <td>{{ ucfirst($car->car_condition) }}</td>
                             <td>
                                 <div class="form-check form-switch">
                                     {{-- <form action="{{ route('status.check',$car->id) }}" method="POST">

@@ -40,7 +40,7 @@
                                     if($plan->expair_date =='lifetime'){
                                        echo '<span class="badge text-bg-primary">Lifetime</span>';
                                     }else{
-                                        $created_at = Carbon\Carbon::parse($plan->created_at)->startOfDay();
+                                        $created_at = Carbon\Carbon::now()->startOfDay();
                                         $expairDate= Carbon\Carbon::parse($plan->expair_date)->startOfDay();
                                         $diff=$created_at->diffInDays($expairDate,false);
 

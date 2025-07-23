@@ -68,6 +68,9 @@ class CarController extends Controller
         'transmission'=>$request->transmission,
         'car_model'=>$request->car_model,
         'is_approve'=>0,
+        'car_condition'=>$request->car_condition,
+        'popular'=>$request->popular ?? 'off',
+        'feature'=>$request->car_feature ?? 'off',
        ];
 
        if($request->hasFile('car_image')){
@@ -82,9 +85,9 @@ class CarController extends Controller
        }
 
       $cars= Car::create($car);
-      
+
        $cars->features()->sync($request->feature);
-           
+
        return redirect()->route('car.create')->with(['message'=>'Car Create Successfully','alert-type'=>'success']);
     }
 
@@ -113,7 +116,7 @@ class CarController extends Controller
         $features=Feature::all();
         $brands=CarBrand::where('status','=','1')->get();
         $users=User::all();
-        // Session::put('name','Nirob'); 
+        // Session::put('name','Nirob');
         return view('admin.car.car.edit',compact('car','features','countries','brands','users','city'));
     }
 
@@ -123,9 +126,9 @@ class CarController extends Controller
     public function update(CarRequest $request, string $id)
     {
         $car=Car::findOrFail($id);
-        
+
         $request->validated();
-       
+
         $carUpdate = [
         'purpose'=> $request->purpose,
         'user_id'=> $request->dealer,
@@ -150,8 +153,11 @@ class CarController extends Controller
         'fuel_type'=>$request->fuel_type,
         'transmission'=>$request->transmission,
         'car_model'=>$request->car_model,
+        'car_condition'=>$request->car_condition,
+        'popular'=>$request->popular ?? 'off',
+        'feature'=>$request->car_feature ?? 'off',
        ];
-       
+
 
        if($request->hasFile('image')){
             $file = $request->file('image');
@@ -185,7 +191,7 @@ class CarController extends Controller
         return redirect()->route('car.index')->with(['message'=> 'Car Delete Successfully!','alert-type'=>'success']);
     }
 
-    // status check 
+    // status check
 
     public function statusUpdate(Request $request,$id){
         $car=Car::findOrFail($id);
@@ -198,7 +204,7 @@ class CarController extends Controller
         // return redirect()->route('car.index')->with(['message'=>'Car Status Updated Successfully','alert-type'=>'success']);
         return response()->json([
             'message' => 'Car Status Updated Successfully!',
-        ]); 
+        ]);
     }
     public function awaitingForApproval(){
         $cars=Car::where('is_approve',0)->get();

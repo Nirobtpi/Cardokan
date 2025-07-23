@@ -301,6 +301,18 @@
                                         <p>Plan List</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('plan.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Purchase History</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('plan.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Pending History</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -331,21 +343,6 @@
                                     <a href="./forms/general.html" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
                                         <p>General Elements</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
-                                <p>
-                                    Manage Ads
-                                    <i class="nav-arrow bi bi-chevron-right"></i> </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./tables/simple.html" class="nav-link"> <i
-                                            class="nav-icon bi bi-circle"></i>
-                                        <p>Simple Tables</p>
                                     </a>
                                 </li>
                             </ul>
@@ -389,6 +386,19 @@
                                     <a href="{{ route('blog.index') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
                                         <p>Comment List</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
+                                <p> Review <i class="nav-arrow bi bi-chevron-right"></i> </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="./tables/simple.html" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Review List</p>
                                     </a>
                                 </li>
                             </ul>
