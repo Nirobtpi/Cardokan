@@ -6,6 +6,7 @@ use App\Models\Blog\Blog;
 use Illuminate\Http\Request;
 use App\Models\Blog\BlogCategory;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 
 class BlogController extends Controller
 {
@@ -152,5 +153,11 @@ class BlogController extends Controller
         $blog->delete();
         $message='Blog deleted successfully';
         return redirect()->route('blog.index')->with(['message'=>$message,'alert-type'=>'success']);
+    }
+
+    public function clearCache()
+    {
+        Artisan::call('optimize:clear'); // This clears config, route, view, and cache together
+        return back()->with(['message'=>'Cache Cleared Successfully!','alert-type'=>'success']);
     }
 }

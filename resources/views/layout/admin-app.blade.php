@@ -412,7 +412,13 @@
                                 <li class="nav-item">
                                     <a href="{{ route('admin.email.config') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
-                                        <p>Configuration</p>
+                                        <p>Email Configuration</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('stripe.config') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Stripe Configuration</p>
                                     </a>
                                 </li>
                             </ul>
@@ -433,7 +439,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="./docs/browser-support.html" class="nav-link"> <i
+                            <a href="{{ route('clear.cache') }}" class="nav-link"> <i
                                     class="nav-icon bi bi-browser-edge"></i>
                                 <p>Cache Clear</p>
                             </a>

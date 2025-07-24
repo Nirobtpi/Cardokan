@@ -17,6 +17,7 @@ use App\Http\Controllers\Country\CountryController;
 use App\Http\Controllers\Admin\ChnagePasswordController;
 use App\Http\Controllers\Admin\Blog\BlogCategoryController;
 use App\Http\Controllers\Admin\EmailConfig\EmailConfigrationController;
+use App\Http\Controllers\StripeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,6 +72,16 @@ Route::middleware('auth:admin')->group(function () {
         Route::resource('blog-category', BlogCategoryController::class);
         Route::resource('blog', BlogController::class);
 
+        // stripe prament route
+
+        Route::get('stripe-config',[StripeController::class,'index'])->name('stripe.config');
+        Route::put('stripe-config/update',[StripeController::class,'update'])->name('stripe.update');
+        Route::get('stripe',[stripeController::class,'stripe'])->name('stripe');
+        Route::post('stripe/post',[stripeController::class,'stripe_post'])->name('stripe.post');
+        Route::get('success',[StripeController::class,'success'])->name('payment.success');
+        Route::get('cancle',[StripeController::class,'cancle'])->name('payment.cancel');
+
+        Route::get('/clear-cache', [BlogController::class, 'clearCache'])->name('clear.cache');
     });
 });
 
