@@ -37,7 +37,7 @@
               <div class="info-box"> <span class="info-box-icon text-bg-warning shadow-sm"> <i
                     class="bi bi-people-fill"></i> </span>
                 <div class="info-box-content"> <span class="info-box-text">New Members</span> <span
-                    class="info-box-number">2,000</span> </div> <!-- /.info-box-content -->
+                    class="info-box-number">{{ $users->count() }}</span> </div> <!-- /.info-box-content -->
               </div> <!-- /.info-box -->
             </div> <!-- /.col -->
           </div> <!-- /.row -->

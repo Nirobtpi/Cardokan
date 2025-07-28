@@ -159,19 +159,19 @@ class CarController extends Controller
        ];
 
 
-       if($request->hasFile('image')){
-            $file = $request->file('image');
+       if($request->hasFile('car_image')){
+            $file = $request->file('car_image');
             $fileName=time().'.'. $file->getClientOriginalExtension();
-            $file->move(public_path('uploads/car/'), $fileName);
+            $file->move(public_path('uploads/cars/'), $fileName);
 
             if($car->image && file_exists(public_path($car->image))){
                 unlink(public_path($car->image));
             };
-            $carUpdate['image']=$fileName;
+            $carUpdate['image']='uploads/cars/'.$fileName;
        }else{
         $carUpdate['image'] = $car->image;
        }
-       $car->update( $carUpdate );
+       $car->update( $carUpdate);
 
       $car->features()->sync($request->feature ?? []);
       return back()->with(['message'=>'Car Create Successfully','alert-type'=>'success']);

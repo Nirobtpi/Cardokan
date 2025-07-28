@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\Car\CarController;
 use App\Http\Controllers\Car\BrandController;
 use App\Http\Controllers\DashboardController;
@@ -11,17 +12,18 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Car\FeatureController;
 use App\Http\Controllers\Country\CityController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\Blog\BlogController;
 use App\Http\Controllers\Admin\Plan\PlanController;
 use App\Http\Controllers\Country\CountryController;
 use App\Http\Controllers\Admin\ChnagePasswordController;
 use App\Http\Controllers\Admin\Blog\BlogCategoryController;
 use App\Http\Controllers\Admin\EmailConfig\EmailConfigrationController;
-use App\Http\Controllers\StripeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/',[HomeController::class,'index'])->name('home')->name('home');
+
+
 
 Route::get('admin/login',[AdminController::class,'show_login_page'])->name('login');
 Route::post('admin/login',[AdminController::class,'login'])->name('admin.login');
@@ -29,7 +31,7 @@ Route::post('admin/login',[AdminController::class,'login'])->name('admin.login')
 Route::middleware('auth:admin')->group(function () {
 
     Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class,'index'])->name('admin.dashboard');
+        Route::get('/', [DashboardController::class,'index'])->name('admin.dashboard');
         Route::get('/logout', [AdminController::class,'logout'])->name('admin.logout');
 
         // admin profile
@@ -82,6 +84,14 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('cancle',[StripeController::class,'cancle'])->name('payment.cancel');
 
         Route::get('/clear-cache', [BlogController::class, 'clearCache'])->name('clear.cache');
+    });
+});
+
+Route::middleware(['auth:web'])->group(function () {
+    Route::prefix('user')->group(function () {
+        // Route::get('/dashboard', [DashboardController::class,'user_dashboard'])->name('user.dashboard');
+        // Route::get('/logout', [UserController::class,'logout'])->name('user.logout');
+
     });
 });
 
