@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\Plan\PlanController;
 use App\Http\Controllers\Country\CountryController;
 use App\Http\Controllers\Admin\ChnagePasswordController;
 use App\Http\Controllers\Admin\Blog\BlogCategoryController;
+use App\Http\Controllers\Admin\Testimonial\TestimonialController;
 use App\Http\Controllers\Admin\EmailConfig\EmailConfigrationController;
 
 
@@ -84,6 +85,9 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('cancle',[StripeController::class,'cancle'])->name('payment.cancel');
 
         Route::get('/clear-cache', [BlogController::class, 'clearCache'])->name('clear.cache');
+
+        // testimonail route
+        Route::resource('testimonial',TestimonialController::class);
     });
 });
 
@@ -94,6 +98,8 @@ Route::middleware(['auth:web'])->group(function () {
 
     });
 });
+
+Route::get('test',[TestimonialController::class,'test'])->name('test');
 
 // Route::get('/test', function () {
 
