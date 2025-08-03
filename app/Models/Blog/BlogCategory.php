@@ -11,4 +11,7 @@ class BlogCategory extends Model
     public function blogs(){
         return $this->hasMany(Blog::class);
     }
+    public function getPostCountAttribute(){
+        return $this->blogs->count();
+    }
 }

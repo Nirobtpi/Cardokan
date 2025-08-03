@@ -11,4 +11,9 @@ class Blog extends Model
     public function category(){
         return $this->belongsTo(BlogCategory::class,'blog_category_id');
     }
+
+    public function getCategoryNameAttribute(){
+        return $this->category->name;
+    }
+ 
 }

@@ -38,7 +38,7 @@
                             <div class="header-wrapper-1">
                                 <div class="logo-area-start">
                                     <a href="index.html" class="logo">
-                                        <img src="assets/images/logo/logo.svg" alt="logo_area">
+                                        <img src="{{ asset('frontend/assets/images/logo/logo.svg') }}" alt="logo_area">
                                     </a>
                                 </div>
                                 <div class="header-right d-block">
@@ -88,32 +88,15 @@
                                     <div class="bottom d-flex align-items-center justify-content-between">
                                         <div class="nav-area">
                                             <ul class="">
-                                                <li class="has-dropdown main-nav">
-                                                    <a class="main-menu" href="javascript:void(0)">Home</a>
-                                                    <ul class="submenu parent-nav">
-                                                        <li><a href="index.html">Dealer One</a></li>
-                                                        <li><a href="index-two.html">Dealer Two</a></li>
-                                                        <li><a href="index-three.html">Dealer Three</a></li>
-                                                        <li><a href="index-four.html">Shop Demo</a></li>
-                                                        <li><a href="index-seven.html">Dealer Slider</a></li>
-                                                        <li><a href="index-eight.html">Dealer Video</a></li>
-                                                        <li><a href="index-five.html">Wash Demo</a></li>
-                                                        <li><a href="index-six.html">Repair Demo</a></li>
-                                                    </ul>
+                                                <li class="main-nav">
+                                                    <a class="main-menu" href="{{ route('home') }}">Home</a>
                                                 </li>
 
                                                 <li class="main-nav">
                                                     <a class="main-menu" href="about.html">About Us</a>
                                                 </li>
-                                                <li class="main-nav has-dropdown">
-                                                    <a class="main-menu" href="javascript:void(0)">Listing</a>
-                                                    <ul class="submenu parent-nav">
-                                                        <li><a href="portfolio.html">Cars One</a></li>
-                                                        <li><a href="portfolio-2.html">Cars Two</a></li>
-                                                        <li><a href="portfolio-3.html">Cars Three</a></li>
-                                                        <li><a href="portfolio-details.html">Car Single</a></li>
-                                                        <li><a href="portfolio-details-2.html">Car Single Two</a></li>
-                                                    </ul>
+                                                <li class="main-nav">
+                                                    <a class="main-menu" href="{{ route('blogs') }}">Listing</a>
                                                 </li>
                                                 <li class="main-nav has-dropdown">
                                                     <a class="main-menu" href="javascript:void(0)">Page</a>

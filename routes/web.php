@@ -20,9 +20,11 @@ use App\Http\Controllers\Admin\ChnagePasswordController;
 use App\Http\Controllers\Admin\Blog\BlogCategoryController;
 use App\Http\Controllers\Admin\Testimonial\TestimonialController;
 use App\Http\Controllers\Admin\EmailConfig\EmailConfigrationController;
+use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
 
-
-Route::get('/',[HomeController::class,'index'])->name('home')->name('home');
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('blogs',[FrontendBlogController::class,'index'])->name('blogs');
+Route::get('blogs/{slug}',[FrontendBlogController::class,'singleBlog'])->name('blogs.view');
 
 
 
@@ -99,7 +101,7 @@ Route::middleware(['auth:web'])->group(function () {
     });
 });
 
-Route::get('test',[TestimonialController::class,'test'])->name('test');
+// Route::get('test',[TestimonialController::class,'test'])->name('test');
 
 // Route::get('/test', function () {
 
