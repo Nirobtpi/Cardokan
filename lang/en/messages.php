@@ -1,0 +1,21 @@
+<?php 
+ return array (
+  'Home' => 'Home',
+  'Shop With Confidence - Quality Vehicles' => 'Shop With Confidence - Quality Vehicles',
+  'Discover Our Best Deals On New And Used' => 'Discover Our Best Deals On New And Used',
+  'Cars' => 'Cars',
+  'Car Category' => 'Car Category',
+  'Browse By' => 'Browse By',
+  'Car' => 'Car',
+  'Type' => 'Type',
+  'Select Car' => 'Select Car',
+  'Our Amazing' => 'Our Amazing',
+  'All Cars' => 'All Cars',
+  'New Cars' => 'New Cars',
+  'Used Cars' => 'Used Cars',
+  1000 => '1000',
+  'Car Sold Already' => 'Car Sold Already',
+  'pagination.previous' => 'pagination.previous',
+  'pagination.next' => 'pagination.next',
+  'Pagination Navigation' => 'Pagination Navigation',
+) ;

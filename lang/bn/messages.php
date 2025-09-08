@@ -1,0 +1,21 @@
+<?php
+return array (
+  'Home' => 'বাড়ি',
+  'Shop With Confidence - Quality Vehicles' => 'আত্মবিশ্বাসের সাথে কেনাকাটা করুন - মানের যানবাহন',
+  'Discover Our Best Deals On New And Used' => 'নতুন এবং ব্যবহৃত আমাদের সেরা ডিলগুলি আবিষ্কার করুন',
+  'Cars' => 'গাড়ি',
+  'Car Category' => 'গাড়ী বিভাগ',
+  'Browse By' => 'ব্রাউজ দ্বারা',
+  'Car' => 'গাড়ি',
+  'Type' => 'প্রকার',
+  'Select Car' => 'গাড়ি নির্বাচন করুন',
+  'Our Amazing' => 'আমাদের আশ্চর্যজনক',
+  'All Cars' => 'সমস্ত গাড়ি',
+  'New Cars' => 'নতুন গাড়ি',
+  'Used Cars' => 'ব্যবহৃত গাড়ি',
+  1000 => '1000',
+  'Car Sold Already' => 'গাড়ি ইতিমধ্যে বিক্রি হয়েছে',
+  'pagination.previous' => 'প্যাগিনেশন.প্রিভিয়াস',
+  'pagination.next' => 'প্যাগিনেশন.নেক্সট',
+  'Pagination Navigation' => 'পৃষ্ঠা নেভিগেশন',
+);

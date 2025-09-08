@@ -108,3 +108,7 @@ Route::middleware(['auth:web'])->group(function () {
 //     Mail::to('wavaje4982@fuasha.com')->send(new TestMail("This is a test email from CarDokan!"));
 //     return "Mail sent!";
 // });
+Route::get('/test', function () {
+    getFileData();
+    return "done";
+});

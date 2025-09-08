@@ -9,11 +9,10 @@
                             <div class="banner-area-one bg_image">
                                 <div class="banner-content-area">
                                     <div class="pre-title wow fadeInUp" data-wow-delay=".2s" data-wow-duration="1s">
-                                        <span>{{ __('Shop With Confidence – Quality Vehicles') }}</span>
+                                        <span>{{ __('Shop With Confidence - Quality Vehicles') }}</span>
                                     </div>
-                                    <h1 class="title wow fadeInUp" data-wow-delay=".4s" data-wow-duration="1s">Discover
-                                        {{ __('Our Best Deals On
-                                        New And Used') }} <span>Cars</span></h1>
+                                    <h1 class="title wow fadeInUp" data-wow-delay=".4s" data-wow-duration="1s">
+                                        {{ __('Discover Our Best Deals On New And Used') }} <span>{{ __('Cars') }}</span></h1>
                                     <div class="select-area-down wow fadeInUp" data-wow-delay=".8s" data-wow-duration="1s">
                                         <form action="#" method="get" accept-charset="utf-8">
                                             <select name="my_select" class="mySelect">
