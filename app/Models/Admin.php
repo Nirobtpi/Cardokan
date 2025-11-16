@@ -89,4 +89,15 @@ class Admin extends Authenticatable
         return PermissionList::whereIn('name', $permissionNames)->get();
     }
 
+//    public function can($permission, $arguments = [])
+//     {
+
+//         if (is_array($permission)) {
+//             return $this->hasAnyPermission($permission);
+//         }
+
+//         // single permission check
+//         return $this->hasPermissionTo($permission);
+//     }
+
 }

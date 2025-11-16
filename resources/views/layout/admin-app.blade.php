@@ -353,6 +353,7 @@
                             </a>
                         </li>
                         <li class="nav-header">CMS & Blogs</li>
+                        @can('manage_blog')
                         <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-box-arrow-in-right"></i>
                                 <p> Manage Blog <i class="nav-arrow bi bi-chevron-right"></i> </p>
@@ -390,6 +391,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @endcan
                         <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-table"></i>
                                 <p> Testimonial <i class="nav-arrow bi bi-chevron-right"></i> </p>
