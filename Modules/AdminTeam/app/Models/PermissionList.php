@@ -3,7 +3,7 @@
 namespace Modules\AdminTeam\App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\AdminTeam\Models\AdminRole;
+use Modules\AdminTeam\App\Models\AdminRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Modules\AdminTeam\Database\Factories\PermissionListFactory;
 

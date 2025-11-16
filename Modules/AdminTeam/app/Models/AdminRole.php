@@ -1,12 +1,11 @@
 <?php
 
-namespace Modules\AdminTeam\Models;
+namespace Modules\AdminTeam\App\Models;
 
 use App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Modules\AdminTeam\App\Models\PermissionList;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Modules\AdminTeam\Database\Factories\AdminRoleFactory;
 
 class AdminRole extends Model
 {
@@ -16,11 +15,6 @@ class AdminRole extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [];
-
-    // protected static function newFactory(): AdminRoleFactory
-    // {
-    //     // return AdminRoleFactory::new();
-    // }
 
     public function permissions()
     {

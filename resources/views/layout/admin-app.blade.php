@@ -424,19 +424,39 @@
                             </ul>
                         </li>
                         <li class="nav-header">Others</li>
+                        @can('team_management_access')
                         <li class="nav-item">
                             <a href="#" class="nav-link"> <i class="nav-icon bi bi-filetype-js"></i>
-                                <p>Newsletter<i class="nav-arrow bi bi-chevron-right"></i> </p>
+                                <p>Team Management <i class="nav-arrow bi bi-chevron-right"></i> </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./docs/javascript/treeview.html" class="nav-link"> <i
+                                    <a href="{{ route('adminteam.create') }}" class="nav-link"> <i
                                             class="nav-icon bi bi-circle"></i>
-                                        <p>Treeview</p>
+                                        <p>Add Team</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('adminteam.index') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Team List</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('adminteam.createRole') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Add Role</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('adminteam.roleLists') }}" class="nav-link"> <i
+                                            class="nav-icon bi bi-circle"></i>
+                                        <p>Roles List</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+                        @endcan
 
                         <li class="nav-item">
                             <a href="{{ route('clear.cache') }}" class="nav-link"> <i

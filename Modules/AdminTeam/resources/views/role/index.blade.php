@@ -1,6 +1,6 @@
 @extends('layout.admin-app')
-@section('title_text', 'Admin Team List')
-@section('page_title', 'Admin Team List')
+@section('title_text', 'Admin Role List')
+@section('page_title', 'Admin Role List')
 @section('content')
 
 <div class="container">
@@ -12,7 +12,7 @@
                     {{-- <div class="search">
                         <input type="text" name="search" id="searchInput" placeholder="Search..." class="form-control">
                     </div> --}}
-                    <a href="{{ route('adminteam.create') }}" class="btn btn-primary">+ Create New</a>
+                    <a href="{{ route('adminteam.createRole') }}" class="btn btn-primary">+ Create New</a>
                 </div>
 
             </div> <!-- /.card-header -->
@@ -22,24 +22,22 @@
                         <tr>
                             <th style="width: 10px" scope="col">Serial</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
                             <th scope="col">Type</th>
                             {{-- <th scope="col">Status</th> --}}
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
-                        @foreach ($adminTeams as $key=>$adminTeam)
+                        @foreach ($roles as $key=>$role)
                         <tr class="align-middle">
-                            <td>{{ $adminTeams->firstItem() + $key }}</td>
-                            <td>{{ $adminTeam->name }}</td>
-                            <td>{{ $adminTeam->email }}</td>
-                            <td>{{ $adminTeam->is_super_admin == 1 ? 'Super Admin' : 'Team Admin' }}</td>
+                            <td>{{ $roles->firstItem() + $key }}</td>
+                            <td>{{ $role->display_name }}</td>
+                            <td>{{ $role->is_super_admin == 1 ? 'Super Admin' : 'Team Admin' }}</td>
                             <td>
 
-                                @if($adminTeam->is_super_admin == 0)
-                                    <a href="{{ route('adminteam.edit', $adminTeam->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form id="adminteam-delete" action="{{ route('adminteam.destroy', $adminTeam->id) }}" method="POST"
+                                @if($role->is_system_role == 0)
+                                    <a href="{{ route('adminteam.roleUpdatePage', $role->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <form id="adminteam-delete" action="{{ route('adminteam.destroy', $role->id) }}" method="POST"
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')

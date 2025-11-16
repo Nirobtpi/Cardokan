@@ -103,6 +103,55 @@ class PermissionListSeeder extends Seeder
                 'parent_id' => null,
                 'status' => 'active',
             ],
+            [
+                'name'=>'team_management_access',
+                'display_name' => 'Team Management Access',
+                'module' => 'team_management',
+                'description' => 'Permission to manage team management',
+                'group' => true,
+                'parent_id' => null,
+                'status' => 'active',
+            ],[
+                'name'=>'manage_team_members',
+                'display_name' => 'Manage Team Members',
+                'module' => 'team_management',
+                'description' => 'Permission to manage team members',
+                'group' => false,
+                'parent_id' => null,
+                'status' => 'active',
+            ],[
+                'name'=>'manage_team_roles',
+                'display_name' => 'Manage Team Roles',
+                'module' => 'team_management',
+                'description' => 'Permission to manage team roles',
+                'group' => false,
+                'parent_id' => null,
+                'status' => 'active',
+            ],[
+                'name'=>'manage_team_permissions',
+                'display_name' => 'Manage Team Permissions',
+                'module' => 'team_management',
+                'description' => 'Permission to manage team permissions',
+                'group' => false,
+                'parent_id' => null,
+                'status' => 'active',
+            ],[
+                'name'=>'assign_team_roles',
+                'display_name' => 'Assign Team Roles',
+                'module' => 'team_management',
+                'description' => 'Permission to assign roles to team members',
+                'group' => false,
+                'parent_id' => null,
+                'status' => 'active',
+            ],[
+                'name'=>'assign_team_permissions',
+                'display_name' => 'Assign Team Permissions',
+                'module' => 'team_management',
+                'description' => 'Permission to assign permissions to team roles',
+                'group' => false,
+                'parent_id' => null,
+                'status' => 'active',
+            ]
         ];
         $groupIds=[];
         foreach ($permissions as $permission) {
@@ -135,6 +184,7 @@ class PermissionListSeeder extends Seeder
             'admin_team' => 'admin_team',
             'dashboard' => 'dashboard',
             'blog' => 'blog',
+            'team_management' => 'team_management',
         ];
 
         return isset($maping[$module]) ? $maping[$module] : null;
